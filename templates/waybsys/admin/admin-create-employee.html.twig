@@ -1,0 +1,50 @@
+{# app/templates/waybsys/admin/admin-create-employee.html.twig #}
+
+{% extends 'waybsys/base.html.twig' %}
+
+{% block content %}
+
+	{{ form_start(form) }}
+		{{ form_errors(form) }}
+		
+		<div class="row">
+			<div class="two columns">
+				{{ form_label(form.first_name, 'First Name') }}
+				{{ form_errors(form.first_name) }}
+				{{ form_widget(form.first_name, {'attr': {'class': 'u-full-width', 'placeholder': 'First Name'}}) }}
+			</div>
+			<div class="two columns">
+				{{ form_label(form.extra_name, 'Second Name') }}
+				{{ form_errors(form.extra_name) }}
+				{{ form_widget(form.extra_name, {'attr': {'class': 'u-full-width', 'placeholder': 'Second Name'}}) }}
+			</div>
+			<div class="two columns">
+				{{ form_label(form.middle_name, 'Middle Name') }}
+				{{ form_errors(form.middle_name) }}
+				{{ form_widget(form.middle_name, {'attr': {'class': 'u-full-width', 'placeholder': 'Middle Name'}}) }}
+			</div>
+			<div class="two columns">
+				{{ form_label(form.last_name, 'Last Name') }}
+				{{ form_errors(form.last_name) }}
+				{{ form_widget(form.last_name, {'attr': {'class': 'u-full-width', 'placeholder': 'Last Name'}}) }}
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="three columns">
+				{{ form_label(form.email, 'Email Address') }}
+				{{ form_errors(form.email) }}
+				{{ form_widget(form.email, {'attr': {'class': 'u-full-width', 'placeholder': 'email@cctsi.com'}}) }}
+			</div>
+			<div class="two columns">
+				{{ form_label(form.local_office, 'Home Office') }}
+				{{ form_errors(form.local_office) }}
+				{{ form_widget(form.local_office, {'attr': {'class': 'u-full-width', 'placeholder': 'Select Branch'}}) }}
+			</div>
+		</div>
+		
+		{{ form_widget(form.save, {'attr': {'class': 'button-primary'}}) }}
+		
+	{{ form_end(form) }}
+
+{% endblock %}

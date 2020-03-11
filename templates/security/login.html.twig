@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CCTSI WAYBSYS{% endblock %}
+
+{% block body %}
+
+	<div id="LoginWrapper">
+		<form method="post">
+			<div id="LoginBoxWrapper">
+				<div id="LoginBox">
+				
+					{% if app.user %}
+						<div class="mb-3">
+							You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+						</div>
+					{% endif %}
+					
+					<div id="UsernameLabel" class="component">
+						<label for="username">Username:</label>
+					</div>
+					
+					<div id="UsernameInput" class="component">
+						<input type="text" value="{{ last_username }}" name="username" id="username" class="form-control" required autofocus />
+					</div>
+
+					<div id="PasswordLabel" class="component">
+						<label for="password">Password:</label>
+					</div>
+					
+					<div id="PasswordInput" class="component">
+						<input type="password" name="password" id="password" class="form-control" required />
+					</div>
+					
+					<input type="hidden" name="_csrf_token"
+						   value="{{ csrf_token('authenticate') }}"
+					/>
+					
+					{% if error %}
+						<div id="ErrorDisplay">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					{#
+						Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+						See https://symfony.com/doc/current/security/remember_me.html
+
+						<div class="checkbox mb-3">
+							<label>
+								<input type="checkbox" name="_remember_me"> Remember me
+							</label>
+						</div>
+					#}
+					
+					<div id="SubmitArea">
+						<button class="btn btn-lg btn-primary" type="submit">
+							Login
+						</button>
+					</div>
+
+					
+				</div>
+			</div>
+		</form>
+		
+	</div>
+	
+{% endblock %}
+
+{% block stylesheets %}
+	<style>
+
+		body {
+			background: white;
+			width: 90%;
+			margin: auto;
+			min-width: 400px;
+		}
+		
+		#LoginWrapper {
+			width: 100%;
+			margin: 0 auto;
+		}
+		
+		#LoginBoxWrapper {
+			width: 300px;
+			height: 150px;
+			margin: 150px auto;
+			background: #DCC7AA;
+			border-radius: 25px;
+			border: 2px solid #F7882F;
+			padding: 20px; 
+		}
+		
+		#LoginBox {
+			position: relative;
+			height: 100%;
+		}
+		
+		#LoginBox .component {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		
+		#ErrorDisplay {
+			position: absolute;
+			bottom: 0px;
+			left: 5px;
+			color: red;
+		}
+		
+		#SubmitArea {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+		}
+	
+	</style>
+{% endblock %}
